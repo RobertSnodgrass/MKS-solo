@@ -35,6 +35,16 @@ ul{
 	width: 380px;
 }
 
+#Add{
+	display: inline;
+	margin-bottom: 10px;
+}
+
 tabs {
 	border-bottom: 0px;
+}
+
+.checky{
+	margin-bottom: 4px;
+	margin-right: 4px;
 }

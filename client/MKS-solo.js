@@ -6,6 +6,7 @@ if (Meteor.isClient) {
   Template.list.helpers({
     items: function() {
       return Items.find();
+      // return Items.find(Session.get('items'));
     },
     doneClass: function(){
       if(this.done){
@@ -23,23 +24,51 @@ if (Meteor.isClient) {
 
       var description = $(event.target).find('[id=newItem]').val();
       Items.insert({description: description})
-      //template.find("form").reset();
+      template.find("form").reset();
       }
   })
 
 
   Template.list.events({
-    "click div": function(){
+    "click .checky": function(){
       Items.update({_id:this._id}, {$set:{done:!this.done}}) //sets list item's "done" property to true; toggles
     },
   })
+
+  Template.list.events({
+      "click .removeitems": function(){
+        console.log("Ya dun tershed it")
+        Items.remove({_id:this._id});
+      },
+    })
+
+  Template.list.events({
+    "dblclick .todoItem": function(){
+      console.log("Ya drblegrbled it")
+      //Session.set('editingList', true)
+    },
+  })
+
+
+  // Meteor.call("getQuote", function(error, results) {
+  //     if (err){
+  //       console.log("Error occurrs")
+  //     }
+  //     else{
+  //       var buddy = result;
+  //       console.log(results); //results.data should be a JSON object
+  //     }
+  //   });
+        
+
 }
 
 if (Meteor.isServer) {
     function seed(){
       Items.remove({}); //removes items on server startup
     }
-  //Meteor.startup(function() {
+  
+  Meteor.startup(seed);
 
     Meteor.publish('items', function(){
       observeSubscription(this, 'items', function(){
@@ -54,6 +83,15 @@ if (Meteor.isServer) {
         Items.insert(items[i]);
       }
     }
+
+
+    // Meteor.methods({
+    //     getQuote: function () {
+    //         this.unblock();
+    //         return Meteor.http.call("GET", " http://api.theysaidso.com/qod");
+    //     }
+    // });
+
 }
 
 
@@ -65,8 +103,52 @@ if (Meteor.isServer) {
 
 
 
+/////////////////////////////////////////////////////////////////////
+//API request to forismatic inspiriational quotes
+// if (Meteor.isServer) {
+    // Meteor.methods({
+    //     getQuote: function () {
+    //         this.unblock();
+    //         return Meteor.http.call("GET", "http://api.forismatic.com/api/1.0/");
+    //     }
+    // });
+// }
+
+    // Meteor.methods({
+    //     getQuote: function () {
+    //         this.unblock();
+    //          var url = "http://api.forismatic.com/api/1.0/"
+    //         return Meteor.http.call("GET", "http://api.forismatic.com/api/1.0/");
+    //     }
+    // });
 
 
+
+// //invoke the server method
+// if (Meteor.isClient) {
+    // Meteor.call("getQuote", function(error, results) {
+    //     console.log(results.content); //results.data should be a JSON object
+    // });
+// }
+
+
+// fetchFromService: function(userName) {
+//       var url = "https://api.twitter.com/1/statuses/user_timeline.json?include_entities=true&include_rts=true&screen_name="+userName+"&count=10";
+//       //synchronous GET
+//       var result = Meteor.http.get(url, {timeout:30000});
+//       if(result.statusCode==200) {
+//         var respJson = JSON.parse(result.content);
+//         console.log("response received.");
+//         return respJson;
+//       } else {
+//         console.log("Response issue: ", result.statusCode);
+//         var errorJson = JSON.parse(result.content);
+//         throw new Meteor.Error(result.statusCode, errorJson.error);
+//       }
+//     }
+
+
+/////////////////////////////////////////////////////////////////////
 
 
 

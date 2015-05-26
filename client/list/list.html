@@ -11,16 +11,15 @@
 <h3>Jump To Do It Mat! </h3>
 
   <!-- Todo list items -->
+  <!-- Add a new task Form -->
+   <form>
+        <input type="text" id="newItem" placeholder="Add a new task!"/>
+        <input type="submit" id="Add" value="Add"/>
+    </form>
   <h5>Here's your personal list of todo items:</h5>
     <ul>
       {{#each items}}
-        <div class="{{doneClass}}">{{description}}</div>
+        <div class="{{doneClass}} todoItem"><input class="checky" type="checkbox">{{description}}    <i class='icon icon-trash removeitems'></i></div>
       {{/each}}
     </ul>
-
-  <!-- Add a new task Form -->
-   <form>
-        <input type="text" id="newItem" placeholder="Add a new task!"/><br>
-        <input type="submit" id="Add" value="Add"/>
-    </form>
 </template>

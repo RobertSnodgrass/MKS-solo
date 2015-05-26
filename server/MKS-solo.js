@@ -23,7 +23,7 @@ if (Meteor.isClient) {
 
       var description = $(event.target).find('[id=newItem]').val();
       Items.insert({description: description})
-      //template.find("form").reset();
+      template.find("form").reset();
       }
   })
 
@@ -39,7 +39,8 @@ if (Meteor.isServer) {
     function seed(){
       Items.remove({}); //removes items on server startup
     }
-  //Meteor.startup(function() {
+ 
+  Meteor.startup(seed);
 
     Meteor.publish('items', function(){
       observeSubscription(this, 'items', function(){
