@@ -1,0 +1,26 @@
+<template name="list">
+
+<ul class="nav nav-tabs">
+  <li role="presentation"><a href="home">Home</a></li>
+  <li role="presentation"><a href="login">Login</a></li>
+  <li role="presentation"><a href="list">Your List!</a></li>
+  <li role="presentation"><a href="logout">Logout</a></li>
+  <li role="presentation"><a href="about">About</a></li>
+</ul>
+
+<h3>Jump To Do It Mat! </h3>
+
+  <!-- Todo list items -->
+  <h5>Here's your personal list of todo items:</h5>
+    <ul>
+      {{#each items}}
+        <div class="{{doneClass}}">{{description}}</div>
+      {{/each}}
+    </ul>
+
+  <!-- Add a new task Form -->
+   <form>
+        <input type="text" id="newItem" placeholder="Add a new task!"/><br>
+        <input type="submit" id="Add" value="Add"/>
+    </form>
+</template>

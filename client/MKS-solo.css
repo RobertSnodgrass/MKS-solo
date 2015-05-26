@@ -1,0 +1,40 @@
+/* CSS declarations go here */
+body{
+	text-align: center;
+}
+
+.bob{
+	text-align: center;
+}
+
+ul{
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.done{
+	text-decoration: line-through;
+}
+
+.nav-tabs > li, .nav-pills > li {
+    float: none;
+    display: inline-block;
+    /**display:inline; /* ie7 fix */
+    /* zoom:1; /* hasLayout ie7 trigger */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.nav-tabs, .nav-pills {
+    text-align: center;
+}
+
+.nav{
+	margin-left: auto;
+	margin-right: auto;
+	width: 380px;
+}
+
+tabs {
+	border-bottom: 0px;
+}
