@@ -12,3 +12,5 @@ accounts-password
 bootstrap
 iron:router
 http
+accounts-ui
+accounts-github
