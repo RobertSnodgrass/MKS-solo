@@ -5,7 +5,10 @@ if (Meteor.isClient) {
 
   Template.list.helpers({
     items: function() {
-      return Items.find();
+      var currentUserId = Meteor.userId();
+      return Items.find({
+        createdBy: currentUserId
+      });
       // return Items.find(Session.get('items'));
     },
     doneClass: function(){
@@ -22,8 +25,13 @@ if (Meteor.isClient) {
     "submit form": function(event, template) {
       event.preventDefault();
 
+      var currentUserId = Meteor.userId();
+
       var description = $(event.target).find('[id=newItem]').val();
-      Items.insert({description: description})
+      Items.insert({
+        description: description,
+        createdBy: currentUserId
+      });
       template.find("form").reset();
       }
   })
