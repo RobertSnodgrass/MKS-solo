@@ -23,12 +23,10 @@ if (Meteor.isClient) {
       event.preventDefault();
 
       var description = $(event.target).find('[id=newItem]').val();
-
       Items.insert({description: description})
       template.find("form").reset();
       }
   })
-
 
   Template.list.events({
     "click .checky": function(){
@@ -39,17 +37,32 @@ if (Meteor.isClient) {
 
   Template.list.events({
       "click .removeitems": function(){
-        console.log("Ya dun tershed it")
         Items.remove({_id:this._id});
+        //Deletes item in the to do list
       },
     })
 
   Template.list.events({
     "dblclick .todoItem": function(){
-      console.log("Ya drblegrbled it")
-      //Session.set('editingList', true)
+      console.log("Item was double clicked")
+      //No functionality at this time; may be implemented later
     },
-  })        
+  })
+
+  Template.logout.events({
+  'click #logOut': function(e, t) {
+    e.preventDefault();
+
+    Meteor.logout(function() {
+      console.log('Bye Meteorite! Come back whenever you want!');
+
+    });
+
+    return false;
+  }
+});
+
+
 }
 
 if (Meteor.isServer) {

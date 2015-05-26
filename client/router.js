@@ -13,3 +13,23 @@ Router.map(function(){
 	this.route('logout', {path:'/logout', template: 'logout'})
 });
 
+var mustBeSignedIn = function(pause) {
+  if (!(Meteor.user() || Meteor.loggingIn())) {
+    Router.go('home');
+  }
+  else{
+    this.next();
+  }
+    
+};
+
+
+// var goToDashboard = function(pause) {
+//   if (Meteor.user()) {
+//     Router.go('home');
+//     pause();
+//   }
+// };
+
+Router.onBeforeAction(mustBeSignedIn, {except: ['home']});
+// Router.onBeforeAction(goToDashboard, {only: ['home']});

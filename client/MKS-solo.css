@@ -48,3 +48,8 @@ tabs {
 	margin-bottom: 4px;
 	margin-right: 4px;
 }
+
+#login-dropdown-list {
+	margin-left: auto;
+	margin-right: auto;
+}
