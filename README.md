@@ -32,18 +32,18 @@ To build on your learning of core engineering concepts, we will begin thinking a
 - Complete the PRESS-RELEASE.md template (<30min)
   - [X] Pick an idea (implement a technology, build a product, make art, etc).
   - [X] Write it down on paper
-  - [ ] Imagine what portion of this could be done in 24 hours.
-  - [ ] Cut the scope in half.
-  - [ ] Cut the above scope in half again.
-  - [ ] Fill in the README.md template document
-- [ ] Use iterative development (go straight to something that demos your idea)
-- [ ] Prepare for pitch @ demo on Tuesday
+  - [X] Imagine what portion of this could be done in 24 hours.
+  - [X] Cut the scope in half.
+  - [X] Cut the above scope in half again.
+  - [X] Fill in the README.md template document
+- [X] Use iterative development (go straight to something that demos your idea)
+- [X] Prepare for pitch @ demo on Tuesday
 
 
 ## Extra Credit
 
 - [ ] Storage - if your app persists data, use a tool like Parse or Firebase. 
-- [ ] If applicable, use an MVC Framework - Make your app production grade with a full-on MVC. 
+- [X] If applicable, use an MVC Framework - Make your app production grade with a full-on MVC. 
 
 
 <!-- 
